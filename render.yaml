@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: nombre-de-tu-app
+    name: Mensajero IVF
     env: node
     plan: free
     buildCommand: "npm install"
