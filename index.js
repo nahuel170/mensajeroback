@@ -3,14 +3,15 @@ const app = express()
 const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
+const corsOptions = {
+    origin: 'https://mensajero-ivf.onrender.com/', 
+    optionsSuccessStatus: 200
+  };
+  
+app.use(cors(corsOptions));
 
 app.use(cors())
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://mensajero-ivf.onrender.com/'); // Esto permite todas las solicitudes, puedes reemplazar '*' con el dominio específico de tu frontend
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-  });
+
 
 const server = http.createServer(app)
 
