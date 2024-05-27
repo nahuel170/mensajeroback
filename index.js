@@ -4,7 +4,7 @@ const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
 const corsOptions = {
-    origin: 'https://mensajero-ivf.onrender.com/', 
+    origin: 'https://mensajero-ivf.onrender.com', 
     optionsSuccessStatus: 200
   };
   
