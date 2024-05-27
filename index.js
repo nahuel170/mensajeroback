@@ -3,12 +3,12 @@ const app = express()
 const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
-// const corsOptions = {
-//     origin: 'https://mensajero-ivf.onrender.com/', 
-//     optionsSuccessStatus: 200
-//   };
+const corsOptions = {
+    origin: 'https://mensajero-ivf.onrender.com/', 
+    optionsSuccessStatus: 200
+  };
   
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(cors())
 
@@ -16,10 +16,10 @@ app.use(cors())
 const server = http.createServer(app)
 
 const io = new Server(server, {
-    cors: {
-        origin: "https://mensajero-ivf.onrender.com/",
-        methods: ["GET","POST"]
-    }
+    // cors: {
+    //     origin: "https://mensajero-ivf.onrender.com/",
+    //     methods: ["GET","POST"]
+    // }
 })
 
 io.on("connection", (socket) => {
