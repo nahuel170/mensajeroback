@@ -35,11 +35,20 @@ io.on("connection", (socket) => {
         });
     });
     
-    socket.on("send_message", (data) => {
-        const Message = new message(data);
-        Message.save().then(() => {
-            socket.to(data.room).emit("receive_message", data);
-        }).catch(err => console.error('Error guardando mensaje en la BD', err));
+    socket.on("send_message",async (data) => {
+        const newMessage = new Message({
+            room: data.room,
+            content: data.content,
+            sender: data.sender,
+        });
+        try{
+            await newMessage.save();
+      socket.to(data.room).emit('receive_message', data);
+        }catch (err) {
+            console.error(err);
+          }
+       
+        
     });
     
 
