@@ -1,9 +1,10 @@
-const {Schema, model} = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = require('mongoose');
 
-const messageSchema = new Schema({
+const MessageSchema = new Schema({
     room:String,
     author:String,
     message:String,
     timestamp: {type: Date, default:Date.now}
 })
-const Message = model('Message',messageSchema);
+module.exports= mongoose.model('Message',MessageSchema);

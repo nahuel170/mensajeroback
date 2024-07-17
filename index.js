@@ -3,7 +3,8 @@ const app = express()
 const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
-const { timeStamp } = require("console")
+const conexion = require('./dataBase/conexion');
+const Message = require('./models/chatModels');
 const corsOptions = {
     origin: 'http://https://mensajero-ivf.onrender.com:5173', 
     methods: ['GET', 'POST'],
@@ -35,8 +36,8 @@ io.on("connection", (socket) => {
     });
     
     socket.on("send_message", (data) => {
-        const message = new Message(data);
-        message.save().then(() => {
+        const Message = new message(data);
+        Message.save().then(() => {
             socket.to(data.room).emit("receive_message", data);
         }).catch(err => console.error('Error guardando mensaje en la BD', err));
     });
