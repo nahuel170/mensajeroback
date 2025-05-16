@@ -34,21 +34,21 @@ io.on("connection", (socket) => {
         });
     });
     
-    socket.on("send_message",async (data) => {
-        const newMessage = new Message({
-            room: data.room,
-            content: data.content,
-            sender: data.sender,
-        });
-        try{
-            await newMessage.save();
-      socket.to(data.room).emit('receive_message', data);
-        }catch (err) {
-            console.error(err);
-          }
+    // socket.on("send_message",async (data) => {
+    //     const newMessage = new Message({
+    //         room: data.room,
+    //         content: data.content,
+    //         sender: data.sender,
+    //     });
+    //     try{
+    //         await newMessage.save();
+    //   socket.to(data.room).emit('receive_message', data);
+    //     }catch (err) {
+    //         console.error(err);
+    //       }
        
         
-    });
+    // });
     
 
     socket.on("disconnect", () => {
