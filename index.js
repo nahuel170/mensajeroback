@@ -3,7 +3,6 @@ const app = express()
 const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
-const Message = require('./models/chatModels');
 const corsOptions = {
     origin: '*', 
     methods: ['GET', 'POST'],
