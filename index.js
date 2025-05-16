@@ -3,20 +3,19 @@ const app = express()
 const http = require("http")
 const cors = require("cors")
 const {Server} = require("socket.io")
-const conexion = require('./dataBase/conexion');
 const Message = require('./models/chatModels');
 const corsOptions = {
-    origin: 'http://https://mensajero-ivf.onrender.com:5173', 
+    origin: '*', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']}
 app.use(cors())
 
-conexion();
+
 const server = http.createServer(app)
 
 const io = new Server(server, {
      cors: {
-        origin: 'https://mensajero-ivf.onrender.com://localhost:5173', 
+        origin: '*', 
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true
