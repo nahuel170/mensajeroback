@@ -14,3 +14,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local environment files
+.env
+.env.*
+!.env.example
